@@ -152,7 +152,7 @@ func main() {
 	for !window.ShouldClose() {
 		t := time.Now()
 
-		if sections == 64 {
+		if sections >= 96 {
 			increase = false
 		}
 
@@ -165,9 +165,17 @@ func main() {
 		}
 
 		if increase == true {
-			sections++
+			if sections > 11 {
+				sections = sections * 2
+			} else {
+				sections++
+			}
 		} else {
-			sections--
+			if sections > 11 {
+				sections = sections / 2
+			} else {
+				sections--
+			}
 		}
 
 		time.Sleep(time.Second/time.Duration(2) - time.Since(t))
